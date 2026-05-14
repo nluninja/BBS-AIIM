@@ -1,0 +1,63 @@
+# Ignore Markdown files and directories
+*.md
+**/*.md
+
+# Ignore PowerPoint files
+*.pptx
+*.ppt
+**/*.pptx
+**/*.ppt
+
+# Ignore PDF files
+*.pdf
+**/*.pdf
+
+# Ignore support directory
+support/
+**/support/
+
+# Common system files to ignore
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python cache files (in case there are any Python files in the future)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# Log files
+*.log
+
+# Archive files
+*.zip
+*.tar.gz
+*.rar
+*.7z
