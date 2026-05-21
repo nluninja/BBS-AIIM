@@ -1,7 +1,3 @@
-# Ignore Markdown files and directories
-*.md
-**/*.md
-
 # Ignore PowerPoint files
 *.pptx
 *.ppt
