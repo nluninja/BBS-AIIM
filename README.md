@@ -2,7 +2,7 @@
 
 This repository contains comprehensive materials for a Natural Language Processing (NLP) course, organized into progressive modules covering both classical and modern NLP techniques. The content is designed for learning text processing, machine learning applications in NLP, and state-of-the-art embedding methods.
 
-## 📚 Repository Structure
+## Repository Structure
 
 The course is organized into the following main modules:
 
@@ -34,8 +34,23 @@ The course is organized into the following main modules:
   - Clustering and duplicate detection
   - Visualization with t-SNE
 
+### Module 3: Advanced Topics
+- Directory exists but content to be added
 
-## 🛠️ Technologies and Libraries Used
+### Module 4: Modern Language Models and Generation
+- **[01_Text_Generation.ipynb](BBS-AIIM/module4/01_Text_Generation.ipynb)** - Text generation with GPT models
+  - Understanding decoder architectures (GPT vs BERT)
+  - Autoregressive text generation
+  - Sampling strategies (temperature, top-k, top-p)
+  - Generation quality metrics (perplexity, diversity, BLEU, ROUGE)
+  - Controlled generation and prompt engineering
+  
+- **[NLP14_1_RAG_Pipeline.ipynb](BBS-AIIM/module4/NLP14_1_RAG_Pipeline.ipynb)** - Retrieval-Augmented Generation (RAG)
+- **[NLP14_2_Modern_LLMs.ipynb](BBS-AIIM/module4/NLP14_2_Modern_LLMs.ipynb)** - Working with modern LLMs
+- **[NLP14_2_Modern_LLMs_Gemini.ipynb](BBS-AIIM/module4/NLP14_2_Modern_LLMs_Gemini.ipynb)** - Google Gemini integration
+
+
+## Technologies and Libraries Used
 
 - **Python Libraries:**
   - `spaCy` - Industrial-strength NLP
@@ -46,13 +61,13 @@ The course is organized into the following main modules:
   - `matplotlib` / `seaborn` - Data visualization
   - `numpy` - Numerical computing
 
-## 📋 Prerequisites
+## Prerequisites
 
 - Python 3.7+
 - Basic understanding of Python programming
 - Familiarity with machine learning concepts (helpful but not required)
 
-## 🚀 Getting Started
+## Getting Started
 
 1. Clone the repository:
 ```bash
@@ -74,18 +89,18 @@ python -m spacy download it_core_news_sm
 4. Start with Module 1 notebooks and progress sequentially
 
 
-## 🔗 Useful Resources
+## Useful Resources
 
 - [spaCy Documentation](https://spacy.io/)
 - [NLTK Documentation](https://www.nltk.org/)
 - [Sentence-Transformers Documentation](https://www.sbert.net/)
 - [Hugging Face Model Hub](https://huggingface.co/models?library=sentence-transformers)
 
-## 🤝 Contributing
+## Contributing
 
 This is an educational repository. If you find errors or have suggestions for improvement, please feel free to open an issue or submit a pull request.
 
-## 📄 License
+## License
 
 Educational materials for learning purposes. Check individual notebooks for specific licensing information.
 
