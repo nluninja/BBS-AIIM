@@ -29,8 +29,8 @@ This repository contains comprehensive materials for a Natural Language Processi
 - **[02_Exploring_Modern_LLMs_with_Gemini.ipynb](module4/02_Exploring_Modern_LLMs_with_Gemini.ipynb)** - Google Gemini integration
 - **[03_RAG_Pipeline.ipynb](module4/03_RAG_Pipeline.ipynb)** - Retrieval-Augmented Generation implementation
 
-### Module 5: Advanced AI Systems
-- **[01_langgraph_multi_agent_tutorial.ipynb](module5/01_langgraph_multi_agent_tutorial.ipynb)** - Complete LangGraph multi-agent system tutorial
+### Module 5: Agentic AI and Miscellanea
+- **[01-multi-agent_system/](module5/01-multi-agent_system/)** - Production-ready travel assistant with vector search
 - **[02_LoRA_Fine_Tuning.ipynb](module5/02_LoRA_Fine_Tuning.ipynb)** - Low-Rank Adaptation fine-tuning techniques
 - **[03_Quantization_Comparison.ipynb](module5/03_Quantization_Comparison.ipynb)** - Model quantization and optimization methods
 
@@ -40,15 +40,17 @@ This repository contains comprehensive materials for a Natural Language Processi
 * **Modern Embeddings**: Word2Vec, GloVe, sentence transformers, semantic search
 * **Deep Learning**: LSTM networks, attention mechanisms, transformer architectures
 * **Language Models**: GPT text generation, BERT classification, fine-tuning strategies
-* **Advanced AI**: Multi-agent systems, retrieval-augmented generation, model optimization
+* **Agentic AI**: Multi-agent systems, production deployment, retrieval-augmented generation, model optimization
 
 ## Technologies Used
 
 * **Core Libraries**: spaCy, NLTK, scikit-learn, transformers, sentence-transformers
 * **Deep Learning**: torch, tensorflow, huggingface ecosystem
 * **Advanced Tools**: langchain, langgraph, peft (LoRA), datasets
+* **Production Systems**: chromadb, vector search, multi-agent deployment
 * **Visualization**: matplotlib, seaborn, plotly
 * **Data**: pandas, numpy
+
 
 ## Prerequisites
 
