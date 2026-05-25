@@ -20,7 +20,11 @@ cp .env.example .env
 # 4. Test
 python test_agent.py
 
-# 5. Run
+# 5. Run Web UI
+./start_ui.sh        # Linux/Mac
+# start_ui.bat       # Windows
+
+# Alternative: Command line
 python run_agent.py
 ```
 
@@ -34,6 +38,8 @@ python run_agent.py
 ## Files
 
 - `agent.py` - Main multi-agent implementation
+- `app.py` - Streamlit web UI
+- `start_ui.sh/.bat` - Web UI startup scripts
 - `test_agent.py` - Verify setup and dependencies
 - `run_agent.py` - Single query test
 - `quick_test.py` - Basic functionality test
@@ -48,12 +54,15 @@ python run_agent.py
 
 ## Example Usage
 
+**Web Interface**: Clean chat interface at `http://localhost:8501`
+- Real-time conversation with the travel agent
+- Example questions provided in the sidebar
+- Status indicators for API key and agent loading
+
+**Command Line**: Direct agent interaction
 ```python
 User: "What are the best beaches in Cornwall?"
 Agent: Lists 10 top Cornwall beaches with descriptions
-
-User: "Tell me about attractions in St Ives"
-Agent: Provides detailed St Ives attraction information
 ```
 
 ## Customization
