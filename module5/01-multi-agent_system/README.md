@@ -31,20 +31,60 @@ This system demonstrates a complete implementation of a conversational AI agent 
 
 ## Setup
 
-1. Install dependencies:
+### 1. Create Virtual Environment
+
+Create and activate a dedicated Python environment:
+
+```bash
+# Create virtual environment
+python -m venv myagent
+
+# Activate environment (Linux/Mac)
+source myagent/bin/activate
+
+# Activate environment (Windows)
+myagent\Scripts\activate
+```
+
+### 2. Install Dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
 
-2. Set up environment variables:
+### 3. Set up Environment Variables
+
+Copy the example environment file and configure your API key:
 ```bash
-# Create .env file
-OPENAI_API_KEY=your_openai_api_key_here
+# Copy example environment file
+cp .env.example .env
 ```
 
-3. Download spaCy models (if needed):
+Then edit `.env` file and replace the placeholder with your actual OpenAI API key:
+```env
+OPENAI_API_KEY=sk-your_actual_openai_api_key_here
+```
+
+**Alternative setup methods:**
+```bash
+# Quick setup via command line
+echo "OPENAI_API_KEY=sk-your_actual_key_here" > .env
+
+# Or export as environment variable (temporary)
+export OPENAI_API_KEY=sk-your_actual_key_here
+```
+
+### 4. Download Language Models (if needed)
+
 ```bash
 python -m spacy download en_core_web_sm
+```
+
+### 5. Verify Installation
+
+Test that everything is working:
+```bash
+python -c "import langchain, langgraph, chromadb; print('All dependencies installed successfully!')"
 ```
 
 ## Usage
@@ -91,6 +131,8 @@ python agent.py
 01-multi-agent_system/
 ├── agent.py           # Main multi-agent system implementation
 ├── requirements.txt   # Python dependencies
+├── .env.example      # Environment variables template
+├── .env              # Your environment variables (create from .env.example)
 └── README.md         # This documentation
 ```
 
