@@ -31,7 +31,23 @@ def test_agent_query():
 
         # Extract response
         response_msg = result["messages"][-1]
-        print(f"\n🤖 Assistant: {response_msg.content}")
+
+        # Handle different response formats from Google Gemini
+        if hasattr(response_msg, 'content'):
+            content = response_msg.content
+            # If content is a list (like from Google Gemini), extract text
+            if isinstance(content, list) and len(content) > 0:
+                # Look for text content in the first item
+                if isinstance(content[0], dict) and 'text' in content[0]:
+                    text_content = content[0]['text']
+                else:
+                    text_content = str(content[0])
+            else:
+                text_content = str(content)
+        else:
+            text_content = str(response_msg)
+
+        print(f"\n🤖 Assistant: {text_content}")
 
         return True
 
@@ -42,7 +58,7 @@ def test_agent_query():
         return False
 
 if __name__ == "__main__":
-    print("🚀 Cornwall Travel Assistant Test")
+    print("🚀 BBS Travel Assistant Test")
     print("=" * 50)
 
     if test_agent_query():

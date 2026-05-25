@@ -9,11 +9,13 @@ from typing import Annotated, Sequence, TypedDict
 import json
 from dotenv import load_dotenv
 
-from langchain_community.document_loaders import AsyncHtmlLoader
-from langchain_community.vectorstores import Chroma
+from langchain_chroma import Chroma
+import aiohttp
+from bs4 import BeautifulSoup
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
 from langchain_core.messages import BaseMessage, HumanMessage, ToolMessage
+from langchain_core.documents import Document
 from langchain_core.tools import tool
 
 from langgraph.graph import StateGraph, END
@@ -37,15 +39,74 @@ UK_DESTINATIONS = [ #A
     "West_Cornwall",
 ]
 
+async def load_html_documents(urls: list[str]) -> list[Document]: #A
+    """Async HTML loader to replace langchain_community.AsyncHtmlLoader"""
+    documents = []
+
+    # Set headers to avoid 403 errors
+    headers = {
+        'User-Agent': os.environ.get('USER_AGENT', 'BBS-Travel-Assistant/1.0 (Educational Project)'),
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.5',
+        'Accept-Encoding': 'gzip, deflate',
+        'DNT': '1',
+        'Connection': 'keep-alive',
+        'Upgrade-Insecure-Requests': '1'
+    }
+
+    async with aiohttp.ClientSession(headers=headers) as session:
+        tasks = []
+        for url in urls:
+            tasks.append(fetch_and_parse(session, url))
+
+        results = await asyncio.gather(*tasks, return_exceptions=True)
+
+        for url, result in zip(urls, results):
+            if isinstance(result, Exception):
+                print(f"Error loading {url}: {result}")
+                continue
+
+            documents.append(Document(
+                page_content=result,
+                metadata={"source": url}
+            ))
+
+    return documents
+
+async def fetch_and_parse(session: aiohttp.ClientSession, url: str) -> str: #B
+    """Fetch HTML content and extract text"""
+    try:
+        # Add delay to be respectful to the server
+        await asyncio.sleep(0.5)
+
+        async with session.get(url) as response:
+            if response.status == 200:
+                html = await response.text()
+                soup = BeautifulSoup(html, 'html.parser')
+                # Remove script and style elements
+                for script in soup(["script", "style"]):
+                    script.extract()
+                # Get text and clean up whitespace
+                text = soup.get_text()
+                # Clean up extra whitespace
+                text = ' '.join(text.split())
+                return text
+            else:
+                raise Exception(f"HTTP {response.status}")
+    except Exception as e:
+        raise Exception(f"Failed to fetch {url}: {e}")
+
+#A Custom async HTML document loader to replace deprecated langchain_community.AsyncHtmlLoader
+#B Fetch and parse HTML content, extracting text while removing scripts and styles
+
 async def build_vectorstore(
     destinations: Sequence[str]) -> Chroma: #B
     """Download WikiVoyage pages and create
     a Chroma vector store."""
-    urls = [f"https://en.wikivoyage.org/wiki/{slug}" 
+    urls = [f"https://en.wikivoyage.org/wiki/{slug}"
         for slug in destinations] #C
-    loader = AsyncHtmlLoader(urls) #C
     print("Downloading destination pages ...") #C
-    docs = await loader.aload() #C
+    docs = await load_html_documents(urls) #C
 
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=1024, chunk_overlap=128) #D
@@ -244,7 +305,19 @@ def chat_loop(): #A
         result = travel_info_agent.invoke(
             state) #E
         response_msg = result["messages"][-1] #F
-        print(f"Assistant: {response_msg.content}\n") #G
+
+        # Handle different response formats from Google Gemini
+        content = response_msg.content
+        if isinstance(content, list) and len(content) > 0:
+            # Look for text content in the first item
+            if isinstance(content[0], dict) and 'text' in content[0]:
+                text_content = content[0]['text']
+            else:
+                text_content = str(content[0])
+        else:
+            text_content = str(content)
+
+        print(f"Assistant: {text_content}\n") #G
 
 #A Define the chat loop
 #B Get the user input

@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Startup script for Cornwall Travel Assistant Web UI
+# Startup script for BBS Travel Assistant Web UI
 
-echo "🏖️ Starting Cornwall Travel Assistant Web UI..."
+echo "🏖️ Starting BBS Travel Assistant Web UI..."
 
 # Check if virtual environment exists
 if [ ! -d "myagent" ]; then

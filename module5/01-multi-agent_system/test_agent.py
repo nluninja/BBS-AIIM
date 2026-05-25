@@ -16,12 +16,12 @@ async def test_basic_components():
 
     try:
         # Test Google Gemini embeddings
-        embeddings = GoogleGenerativeAIEmbeddings(model="models/text-embedding-004")
+        embeddings = GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-001")
         test_embedding = await embeddings.aembed_query("Hello world")
         print(f"✅ Google Embeddings working - vector size: {len(test_embedding)}")
 
         # Test Gemini Chat
-        llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash-exp")
+        llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash")
         response = await llm.ainvoke("Say 'Hello from the travel agent test!'")
         print(f"✅ Gemini Chat working - Response: {response.content}")
 
@@ -36,15 +36,17 @@ def test_imports():
     print("📦 Testing imports...")
 
     try:
-        from langchain_community.document_loaders import AsyncHtmlLoader
-        from langchain_community.vectorstores import Chroma
+        from langchain_chroma import Chroma
+        import aiohttp
+        from bs4 import BeautifulSoup
         from langchain_text_splitters import RecursiveCharacterTextSplitter
         from langchain_core.messages import HumanMessage, ToolMessage
+        from langchain_core.documents import Document
         from langchain_core.tools import tool
         from langgraph.graph import StateGraph, END
         from langgraph.prebuilt import tools_condition
 
-        print("✅ All imports successful")
+        print("✅ All imports successful (using standalone packages)")
         return True
 
     except Exception as e:

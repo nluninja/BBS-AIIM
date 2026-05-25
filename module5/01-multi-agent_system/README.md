@@ -77,11 +77,12 @@ UK_DESTINATIONS = [
 
 ## Architecture
 
-- **Vector Store**: Chroma with Google text embeddings
-- **Language Model**: Gemini 2.0 Flash Experimental
+- **Vector Store**: Chroma (standalone package) with Google Gemini embeddings
+- **Language Model**: Gemini 2.0 Flash
 - **Search Tool**: Semantic similarity search
 - **Agent**: LangGraph state management
-- **Data**: WikiVoyage travel content
+- **Data**: WikiVoyage travel content (custom async loader)
+- **No deprecated dependencies**: Migrated from langchain-community to standalone packages
 
 ## Troubleshooting
 

@@ -98,7 +98,18 @@ def main():
                     # Create state and get response
                     state = {"messages": [HumanMessage(content=prompt)]}
                     result = agent.invoke(state)
-                    response = result["messages"][-1].content
+                    response_msg = result["messages"][-1]
+
+                    # Handle different response formats from Google Gemini
+                    content = response_msg.content
+                    if isinstance(content, list) and len(content) > 0:
+                        # Look for text content in the first item
+                        if isinstance(content[0], dict) and 'text' in content[0]:
+                            response = content[0]['text']
+                        else:
+                            response = str(content[0])
+                    else:
+                        response = str(content)
 
                     st.markdown(response)
 

@@ -1,7 +1,7 @@
 @echo off
-REM Startup script for Cornwall Travel Assistant Web UI (Windows)
+REM Startup script for BBS Travel Assistant Web UI (Windows)
 
-echo 🏖️ Starting Cornwall Travel Assistant Web UI...
+echo 🏖️ Starting BBS Travel Assistant Web UI...
 
 REM Check if virtual environment exists
 if not exist "myagent" (
