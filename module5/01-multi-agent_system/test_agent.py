@@ -38,7 +38,7 @@ def test_imports():
     try:
         from langchain_community.document_loaders import AsyncHtmlLoader
         from langchain_community.vectorstores import Chroma
-        from langchain.text_splitter import RecursiveCharacterTextSplitter
+        from langchain_text_splitters import RecursiveCharacterTextSplitter
         from langchain_core.messages import HumanMessage, ToolMessage
         from langchain_core.tools import tool
         from langgraph.graph import StateGraph, END

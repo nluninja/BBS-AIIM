@@ -4,6 +4,7 @@ langgraph>=0.0.40
 langchain-community>=0.0.20
 langchain-openai>=0.0.8
 langchain-core>=0.1.30
+langchain-text-splitters>=0.0.1
 
 # Vector database and embeddings
 chromadb>=0.4.0

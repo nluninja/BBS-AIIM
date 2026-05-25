@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 
 from langchain_community.document_loaders import AsyncHtmlLoader
 from langchain_community.vectorstores import Chroma
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_core.messages import BaseMessage, HumanMessage, ToolMessage
 from langchain_core.tools import tool
@@ -115,8 +115,8 @@ def search_travel_info(query: str) -> str: #B
 TOOLS = [search_travel_info] #A
 
 llm_model = ChatOpenAI(
-    model="gpt-5-mini", #B
-    use_responses_api=True) #B
+    model="gpt-4o-mini", #B
+    temperature=0) #B
 llm_with_tools = llm_model.bind_tools(TOOLS) #C
 
 #A Define the tools list (in our case, only one tool)
