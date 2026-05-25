@@ -47,7 +47,7 @@ The course is organized into the following main modules:
   
 - **[NLP14_1_RAG_Pipeline.ipynb](BBS-AIIM/module4/NLP14_1_RAG_Pipeline.ipynb)** - Retrieval-Augmented Generation (RAG)
 - **[NLP14_2_Modern_LLMs.ipynb](BBS-AIIM/module4/NLP14_2_Modern_LLMs.ipynb)** - Working with modern LLMs
-- **[NLP14_2_Modern_LLMs_Gemini.ipynb](BBS-AIIM/module4/NLP14_2_Modern_LLMs_Gemini.ipynb)** - Google Gemini integration
+- **[02_Modern_LLMs_Gemini.ipynb](BBS-AIIM/module4/02_Modern_LLMs_Gemini.ipynb)** - Google Gemini integration with troubleshooting
 
 
 ## Technologies and Libraries Used
