@@ -1,6 +1,6 @@
 # Multi-Agent Travel Assistant
 
-LangGraph-based travel assistant for Cornwall, England using vector search on WikiVoyage content.
+LangGraph-based travel assistant for Cornwall, England using Google Gemini 2.0 Flash and vector search on WikiVoyage content.
 
 ## Quick Start
 
@@ -15,7 +15,7 @@ pip install -r requirements.txt
 
 # 3. Set API key
 cp .env.example .env
-# Edit .env and add your OpenAI API key
+# Edit .env and add your Google API key
 
 # 4. Test
 python test_agent.py
@@ -49,7 +49,7 @@ python run_agent.py
 ## Requirements
 
 - Python 3.8+
-- OpenAI API key
+- Google API key (for Gemini 2.0 Flash)
 - Internet connection (for WikiVoyage downloads)
 
 ## Example Usage
@@ -77,16 +77,18 @@ UK_DESTINATIONS = [
 
 ## Architecture
 
-- **Vector Store**: Chroma with OpenAI embeddings
+- **Vector Store**: Chroma with Google text embeddings
+- **Language Model**: Gemini 2.0 Flash Experimental
 - **Search Tool**: Semantic similarity search
 - **Agent**: LangGraph state management
 - **Data**: WikiVoyage travel content
 
 ## Troubleshooting
 
-- Check OpenAI API key in `.env`
+- Check Google API key in `.env`
 - Ensure internet connection for downloads
 - First run downloads and processes content (takes time)
 - Use `test_agent.py` to verify setup
+- Get your Google API key at: https://makersuite.google.com/app/apikey
 
 Educational project for BBS-AIIM NLP course.

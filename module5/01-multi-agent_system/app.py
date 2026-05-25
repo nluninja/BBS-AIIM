@@ -41,7 +41,7 @@ def main():
         This travel assistant uses:
         - **Vector Search** through WikiVoyage content
         - **LangGraph** multi-agent system
-        - **OpenAI** for natural language processing
+        - **Google Gemini 2.0 Flash** for natural language processing
 
         Ask about beaches, attractions, activities, and more in Cornwall!
         """)
@@ -49,12 +49,12 @@ def main():
         st.header("🔧 Status")
 
         # Check API key
-        api_key = os.environ.get('OPENAI_API_KEY')
-        if api_key:
-            st.success("✅ API Key loaded")
+        api_key = os.environ.get('GOOGLE_API_KEY')
+        if api_key and api_key != "your_google_api_key_here":
+            st.success("✅ Google API Key loaded")
         else:
-            st.error("❌ No API Key found")
-            st.info("Add OPENAI_API_KEY to .env file")
+            st.error("❌ No Google API Key found")
+            st.info("Add GOOGLE_API_KEY to .env file")
             return
 
         # Load agent

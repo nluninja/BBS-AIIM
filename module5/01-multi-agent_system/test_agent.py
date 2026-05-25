@@ -5,25 +5,25 @@ Quick test script for the travel agent
 import os
 import asyncio
 from dotenv import load_dotenv
-from langchain_openai import OpenAIEmbeddings, ChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
 
 # Load environment
 load_dotenv()
 
 async def test_basic_components():
     """Test basic components without full agent setup"""
-    print("🔍 Testing OpenAI connection...")
+    print("🔍 Testing Google Gemini connection...")
 
     try:
-        # Test OpenAI embeddings
-        embeddings = OpenAIEmbeddings()
+        # Test Google Gemini embeddings
+        embeddings = GoogleGenerativeAIEmbeddings(model="models/text-embedding-004")
         test_embedding = await embeddings.aembed_query("Hello world")
-        print(f"✅ OpenAI Embeddings working - vector size: {len(test_embedding)}")
+        print(f"✅ Google Embeddings working - vector size: {len(test_embedding)}")
 
-        # Test ChatOpenAI
-        llm = ChatOpenAI(model="gpt-4o-mini")
+        # Test Gemini Chat
+        llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash-exp")
         response = await llm.ainvoke("Say 'Hello from the travel agent test!'")
-        print(f"✅ ChatOpenAI working - Response: {response.content}")
+        print(f"✅ Gemini Chat working - Response: {response.content}")
 
         return True
 

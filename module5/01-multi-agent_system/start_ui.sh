@@ -17,9 +17,9 @@ fi
 # Check if .env file exists
 if [ ! -f ".env" ]; then
     echo "❌ .env file not found!"
-    echo "Please create .env file with your OpenAI API key:"
+    echo "Please create .env file with your Google API key:"
     echo "  cp .env.example .env"
-    echo "  # Edit .env and add your OPENAI_API_KEY"
+    echo "  # Edit .env and add your GOOGLE_API_KEY"
     exit 1
 fi
 

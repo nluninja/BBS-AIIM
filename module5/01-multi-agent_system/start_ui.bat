@@ -17,9 +17,9 @@ if not exist "myagent" (
 REM Check if .env file exists
 if not exist ".env" (
     echo ❌ .env file not found!
-    echo Please create .env file with your OpenAI API key:
+    echo Please create .env file with your Google API key:
     echo   copy .env.example .env
-    echo   REM Edit .env and add your OPENAI_API_KEY
+    echo   REM Edit .env and add your GOOGLE_API_KEY
     pause
     exit /b 1
 )

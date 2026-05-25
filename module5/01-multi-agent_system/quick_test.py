@@ -4,7 +4,7 @@ Quick test of agent without vector store setup
 """
 import os
 from dotenv import load_dotenv
-from langchain_openai import ChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import HumanMessage
 from langchain_core.tools import tool
 
@@ -23,7 +23,7 @@ def test_simple_agent():
 
     try:
         # Create LLM
-        llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
+        llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash", temperature=0)
 
         # Bind tool
         llm_with_tools = llm.bind_tools([mock_search_tool])
