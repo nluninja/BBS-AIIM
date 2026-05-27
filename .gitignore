@@ -1,5 +1,5 @@
 .env
-myagent/
+agentenv/
 
 # Ignore PowerPoint files
 *.pptx
