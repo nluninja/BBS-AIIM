@@ -4,11 +4,11 @@ REM Startup script for BBS Travel Assistant Web UI (Windows)
 echo 🏖️ Starting BBS Travel Assistant Web UI...
 
 REM Check if virtual environment exists
-if not exist "myagent" (
-    echo ❌ Virtual environment 'myagent' not found!
+if not exist "agentenv" (
+    echo ❌ Virtual environment 'agentenv' not found!
     echo Please run setup first:
-    echo   python -m venv myagent
-    echo   myagent\Scripts\activate
+    echo   python -m venv agentenv
+    echo   agentenv\Scripts\activate
     echo   pip install -r requirements.txt
     pause
     exit /b 1
@@ -26,6 +26,6 @@ if not exist ".env" (
 
 REM Activate virtual environment and run Streamlit
 echo 🚀 Activating environment and starting web UI...
-call myagent\Scripts\activate
+call agentenv\Scripts\activate
 streamlit run app.py --server.port 8501 --server.address localhost
 pause

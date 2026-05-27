@@ -6,9 +6,9 @@ LangGraph-based travel assistant for Cornwall, England using Google Gemini 2.0 F
 
 ```bash
 # 1. Create environment
-python3 -m venv myagent
-source myagent/bin/activate  # Linux/Mac
-# myagent\Scripts\activate   # Windows
+python3 -m venv agentenv
+source agentenv/bin/activate  # Linux/Mac
+# agentenv\Scripts\activate   # Windows
 
 # 2. Install dependencies
 pip install -r requirements.txt

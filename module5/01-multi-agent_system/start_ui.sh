@@ -5,11 +5,11 @@
 echo "🏖️ Starting BBS Travel Assistant Web UI..."
 
 # Check if virtual environment exists
-if [ ! -d "myagent" ]; then
-    echo "❌ Virtual environment 'myagent' not found!"
+if [ ! -d "agentenv" ]; then
+    echo "❌ Virtual environment 'agentenv' not found!"
     echo "Please run setup first:"
-    echo "  python3 -m venv myagent"
-    echo "  source myagent/bin/activate"
+    echo "  python3 -m venv agentenv"
+    echo "  source agentenv/bin/activate"
     echo "  pip install -r requirements.txt"
     exit 1
 fi
@@ -25,5 +25,5 @@ fi
 
 # Activate virtual environment and run Streamlit
 echo "🚀 Activating environment and starting web UI..."
-source myagent/bin/activate
+source agentenv/bin/activate
 streamlit run app.py --server.port 8501 --server.address localhost
